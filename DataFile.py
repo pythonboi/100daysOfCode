@@ -26,33 +26,55 @@ import os
 #
 
 
-TextFile = "C:\\Users\htukuru\\Downloads\\New folder (3)\\"
+# TextFile = "C:\\Users\htukuru\\Downloads\\New folder (3)\\"
+#
+# os.chdir(TextFile)
+#
+# myDir = os.listdir(TextFile)
+#
+# print(myDir)
+#
+# myDir.remove("FileData.txt")
+#
+# myFile = open("TheFile", 'w')
+#
+# print(myDir)
 
-os.chdir(TextFile)
+# getList = []
 
-myDir = os.listdir(TextFile)
-
-print(myDir)
-
-with open(myDir[3]) as file:
-    km = file.read()
+# with open("TheFile") as file:
+# with open(myDir[4], 'r') as file:
+#     myFile.write(file.read())
+    # km = file.read()
+    # with open("TheFile", 'w') as newFile:
+    #     for g in file:
+    #         print(g)
+    #         newFile.write(g)
+    # myFile = file.writelines(km)
     # info = re.findall(r"(\d+)\s+\d+\s.+\s+\d\s\w+\s+\w+\s+\d+\s", km)
-    info1 = re.findall(r"(\d+\s\w+\s+\d+\s+\d+\s+.+)", km)
-    info2 = re.findall(r"\d+\s\w+\s+\d+\s+[0-9][0-9]\:[0-9][0-9].+", km)
-    # print(info)
+    # info1 = re.findall(r"(\d+\s\w+\s+\d+\s+\d+\s+.+)", km)
+    # info2 = re.findall(r"\d+\s\w+\s+\d+\s+[0-9][0-9]\:[0-9][0-9].+", km)
 
-    # size, data = info[0], info[1]
+# with open("FileData", "w") as oneFile:
+#     for m in info1:
+#         # lFile = getList.append(m)
+#         mFile = str(m)
+#         oneFile.writelines(mFile + "\n")
 
-    # print(file.read())
+# print(getList)
 
-with open("FileData", 'w') as oneFile:
-    for a in info1:
-        listString = str(a)
-        print(listString)
-        # oneFile.writelines(listString)
+# print(myFile)
+#
+# myFile.close()
 
-
-
-# print(size + data)
-# print(info1)
-#print(info2)
+with open("modifiedDatePlus") as goFile:
+    mi = goFile.read()
+    yourFile = open("TheFile", 'w')
+    first = re.findall(r"(\d+\s\w+\s+\d+\s+\d+\s+.+)", mi)
+    second = re.findall(r"\d+\s\w+\s+\d+\s+[0-9][0-9]\:[0-9][0-9].+", mi)
+    for v in first:
+        yourFile.writelines(v + "\n")
+    for m in second:
+        yourFile.writelines(m + "\n")
+    # yourFile.write(mi)
+    yourFile.close()
