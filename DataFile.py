@@ -26,34 +26,27 @@ import os
 #
 
 
-# TextFile = "C:\\Users\htukuru\\Downloads\\New folder (3)\\"
-#
-# os.chdir(TextFile)
-#
-# myDir = os.listdir(TextFile)
-#
-# print(myDir)
-#
-# myDir.remove("FileData.txt")
-#
-# myFile = open("TheFile", 'w')
-#
-# print(myDir)
+TextFile = "C:\\Users\htukuru\\Downloads\\New folder (3)\\"
 
-# getList = []
+os.chdir(TextFile)
 
-# with open("TheFile") as file:
-# with open(myDir[4], 'r') as file:
-#     myFile.write(file.read())
-    # km = file.read()
-    # with open("TheFile", 'w') as newFile:
-    #     for g in file:
-    #         print(g)
-    #         newFile.write(g)
-    # myFile = file.writelines(km)
-    # info = re.findall(r"(\d+)\s+\d+\s.+\s+\d\s\w+\s+\w+\s+\d+\s", km)
-    # info1 = re.findall(r"(\d+\s\w+\s+\d+\s+\d+\s+.+)", km)
-    # info2 = re.findall(r"\d+\s\w+\s+\d+\s+[0-9][0-9]\:[0-9][0-9].+", km)
+myDir = os.listdir(TextFile)
+
+myDir.remove("FileData.txt")
+
+myFile = open("TheFile", 'w')
+
+with open(myDir[4], 'r') as file:
+    myFile.write(file.read())
+    km = file.read()
+    with open("TheFile", 'w') as newFile:
+        for g in file:
+            print(g)
+            newFile.write(g)
+    myFile = file.writelines(km)
+    info = re.findall(r"(\d+)\s+\d+\s.+\s+\d\s\w+\s+\w+\s+\d+\s", km)
+    info1 = re.findall(r"(\d+\s\w+\s+\d+\s+\d+\s+.+)", km)
+    info2 = re.findall(r"\d+\s\w+\s+\d+\s+[0-9][0-9]\:[0-9][0-9].+", km)
 
 # with open("FileData", "w") as oneFile:
 #     for m in info1:
