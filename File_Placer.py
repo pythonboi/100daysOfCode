@@ -64,6 +64,8 @@ if currentDirectory != chgeDirectory:
         if os.path.exists(fullPath):
             print("Yes")
 
+        # Differentiate the file from the extension
+
         for f in fileSide:
 
             if os.path.isfile(f):
@@ -73,29 +75,39 @@ if currentDirectory != chgeDirectory:
                 fileExt = splitFileExt[1]
 
                 # print(fileExt)
+                # print(splitFileExt)
+
+                # Using regular Expression to separate the file extension from the file name
 
                 for ext in fileExt:
                     regExt = re.search(r'\.(\w+)', fileExt)
                 newfileExt.append(regExt.group(1))
 
-        print(newfileExt)
+        # print(newfileExt)
+
+        # Making the extension to be unique in the file
 
         for uni in newfileExt:
-            newSet.add(uni)
+            newSet.add(uni.lower())
 
         print(newSet)
 
         print("Here is the second set side")
         print(len(newSet))
 
+# Creating the Folder from the file extension
+
         for uniqFile in newSet:
-            if uniqFile in newSet:
-                os.mkdir(uniqFile)
+            try:
+                if uniqFile in newSet:
+                    os.mkdir(uniqFile.title())
+                    print(f"{uniqFile} created successfully")
+            except FileExistsError:
+                print(f"{uniqFile} already exists ")
 
-        print(f"{uniqFile} created successfully")
 
-
-
+            # else:
+            #     print(f"{uniqFile} already exists ")
 
         #
         #         else:
