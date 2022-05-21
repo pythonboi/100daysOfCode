@@ -4,9 +4,12 @@ import os
 # directoryName = input("Please enter the directory username: ")
 # path = ''
 
-destination = 'Lagos'
-name = 'akin'
+# destination = 'Lagos'
+# name = 'akin'
+#
+# while True:
+#     if 'Lagos' in destination and 'akin' in name:
+#         print("(CCC) ---> Continue Counting Ceiling 🤣 😂 !!!")
 
-while True:
-    if 'Lagos' in destination and 'akin' in name:
-        print("(CCC) ---> Continue Counting Ceiling 🤣 😂 !!!")
+print(os.getcwd())
+
