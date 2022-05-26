@@ -12,6 +12,13 @@ fileSide = []
 getfileList = ' '
 newfileExt = []
 newSet = set()
+fullPath = ''
+getFilename = []
+myAppend = []
+
+dest = os.path.join(chgeDirectory, )
+dest1 = os.path.abspath(chgeDirectory)
+print(dest, dest1)
 
 print(type(newSet))
 
@@ -47,9 +54,12 @@ if currentDirectory != chgeDirectory:
         print("Here is folder/directory section below: ")
         print("=======================================================================================================")
 
-        print(folderSide)
-        print(len(fileSide))
-        fullPath = ''
+        # print(folderSide)
+        # print(len(fileSide))
+        # print(fileSide)
+
+        # Here is printing all the file in the directory
+        # print(fileSide)
         # for v in folderSide:
         #     fullPath += os.path.join(chgeDirectory, v)
 
@@ -64,7 +74,7 @@ if currentDirectory != chgeDirectory:
         if os.path.exists(fullPath):
             print("Yes")
 
-# Differentiate the file from the extension
+        # Differentiate the file from the extension
 
         for f in fileSide:
 
@@ -74,7 +84,9 @@ if currentDirectory != chgeDirectory:
                 fileName = splitFileExt[0]
                 fileExt = splitFileExt[1]
 
-# Using regular Expression to separate the file extension from the file name
+                # print(splitFileExt)
+
+                # Using regular Expression to separate the file extension from the file name
 
                 for ext in fileExt:
                     regExt = re.search(r'\.(\w+)', fileExt)
@@ -82,7 +94,7 @@ if currentDirectory != chgeDirectory:
 
         # print(newfileExt)
 
-# Making the extension to be unique in the file
+        # Making the extension to be unique in the file
 
         for uni in newfileExt:
             newSet.add(uni.lower())
@@ -92,12 +104,12 @@ if currentDirectory != chgeDirectory:
         print("Here is the second set side")
         print(len(newSet))
 
-# Creating the Folder from the file extension
+        # Creating the Folder from the file extension
 
         for uniqFile in newSet:
             try:
                 if uniqFile in newSet:
-                    os.mkdir(uniqFile.title())
+                    os.mkdir(uniqFile)  # .title())
                     print(f"{uniqFile} created successfully")
             except FileExistsError:
                 print(f"{uniqFile} already exists ")
@@ -105,9 +117,64 @@ if currentDirectory != chgeDirectory:
     else:
         print("No folder created")
 
-    for vry in newSet:
-        pass
+    for vryFile in lstDir:
 
+        if os.path.isfile(vryFile):
+
+            getfile, getnewFileExt = os.path.splitext(vryFile)
+            getExtFilePath = os.path.join(getfile, getnewFileExt)
+
+
+            for chkFolder in folderSide:
+                #print(chkFolder)
+                getExistingDir = os.path.join(chgeDirectory, chkFolder)
+                #print(getExistingDir)
+
+                if getExistingDir.endswith(getnewFileExt):
+                    shutil.copy(vryFile, getExistingDir)
+                    #print(vryFile)
+                        #pr and chkFolder in getnewFileExt:
+
+                    # os.chdir(os.path.join(chgeDirectory, chkFolder))
+                    # shutil.copy(getfile, getnewFileExt)
+
+
+                # print(getExistingDir)
+
+                #     if newGetSet in chkFolder:
+                #         shutil.copyfile(getfile, getExistingDir)
+                #         # myAppend.append("yes")
+                #         # print("yes")
+                #
+                #     else:
+                #         print("no")
+                #
+                # print(len(myAppend))
+
+            # if newGetSet == chkFolder:
+            #     print("yes")
+            # else:
+            #     print("No")
+
+                # print(os.path.isdir(vryFile))
+                # shutil.copyfile(getfile, vryFile)
+
+            # print(getnewFileExt)
+        else:
+            print("false")
+
+        # for chkFolder in folderSide:
+        #     getExistingDir = os.path.join(chgeDirectory, chkFolder)
+        #     print(getExistingDir)
+
+# for vryFile in fileSide:
+#
+#     if vryFile.endswith()
+#     if vryFile.endswith('rdp'):
+#         print(f"{vryFile}")
+#         # shutil.copyfile()
+#
+#     pass
 
 # urlLink = "https://www.youtube.com/watch?v=n3IYVthup9I"
 #
