@@ -12,7 +12,7 @@ fileSide = []
 getfileList = ' '
 newfileExt = []
 newSet = set()
-fullPath = ''
+fullPath = os.path.join(chgeDirectory, getfileList)
 getFilename = []
 myAppend = []
 
@@ -56,7 +56,7 @@ if currentDirectory != chgeDirectory:
 
         # print(folderSide)
         # print(len(fileSide))
-        # print(fileSide)
+        print(fileSide)
 
         # Here is printing all the file in the directory
         # print(fileSide)
@@ -71,10 +71,13 @@ if currentDirectory != chgeDirectory:
             print(f"{newFolder} folder already exits")
             # exit()
 
-        if os.path.exists(fullPath):
-            print("Yes")
+        # if os.path.exists(fullPath):
+        #     print(fullPath)
+        #     print("Yes")
 
         # Differentiate the file from the extension
+
+        # Commenting this for issue that needs to be fix
 
         for f in fileSide:
 
@@ -93,6 +96,8 @@ if currentDirectory != chgeDirectory:
                 newfileExt.append(regExt.group(1))
 
         # print(newfileExt)
+
+        # Need to fix the issue above
 
         # Making the extension to be unique in the file
 
@@ -121,51 +126,84 @@ if currentDirectory != chgeDirectory:
 
         if os.path.isfile(vryFile):
 
-            getfile, getnewFileExt = os.path.splitext(vryFile)
-            getExtFilePath = os.path.join(getfile, getnewFileExt)
+            # getfile, getnewFileExt = os.path.splitext(vryFile)
+            # getExtFilePath = os.path.join(chgeDirectory, getfile)
+            # print(vryFile)
+            fullPath = os.path.join(chgeDirectory, vryFile)
+            # print(fullPath)
+            # print(len(fullPath))
+            fileName, fileExt = os.path.splitext(vryFile)
 
+            # print(getExtFilePath)
 
             for chkFolder in folderSide:
-                #print(chkFolder)
+                # print(chkFolder)
                 getExistingDir = os.path.join(chgeDirectory, chkFolder)
-                #print(getExistingDir)
+                # print(getExistingDir)
 
-                if getExistingDir.endswith(getnewFileExt):
-                    shutil.copy(vryFile, getExistingDir)
-                    #print(vryFile)
-                        #pr and chkFolder in getnewFileExt:
+                if fullPath.endswith(fileExt):  # and fullPath.endswith(fileExt) == os.path.isdir(chkFolder):
+                    pass
+                    # print(fileExt)
+                    # shutil.copy(fullPath, getExistingDir)
 
-                    # os.chdir(os.path.join(chgeDirectory, chkFolder))
-                    # shutil.copy(getfile, getnewFileExt)
+                # if getExistingDir.endswith(getExtFilePath):
+                #     shutil.copy(vryFile, getExistingDir)
+                # print(vryFile)
+                # pr and chkFolder in getnewFileExt:
 
+                # os.chdir(os.path.join(chgeDirectory, chkFolder))
+                # shutil.copy(getfile, getnewFileExt)
 
                 # print(getExistingDir)
 
-                #     if newGetSet in chkFolder:
-                #         shutil.copyfile(getfile, getExistingDir)
-                #         # myAppend.append("yes")
-                #         # print("yes")
-                #
-                #     else:
-                #         print("no")
-                #
-                # print(len(myAppend))
+    # for vryFile in lstDir:
+    #
+    #     if os.path.isfile(vryFile):
+    #
+    #         getfile, getnewFileExt = os.path.splitext(vryFile)
+    #         getExtFilePath = os.path.join(chgeDirectory, getfile)
+    #         print(getExtFilePath)
+    #
+    #         for chkFolder in folderSide:
+    #             # print(chkFolder)
+    #             getExistingDir = os.path.join(chgeDirectory, chkFolder)
+    #             # print(getExistingDir)
+    #
+    #             if getExistingDir.endswith(getExtFilePath):
+    #                 shutil.copy(vryFile, getExistingDir)
+    #                 # print(vryFile)
+    #                 # pr and chkFolder in getnewFileExt:
+    #
+    #                 # os.chdir(os.path.join(chgeDirectory, chkFolder))
+    #                 # shutil.copy(getfile, getnewFileExt)
+    #
+    #             # print(getExistingDir)
 
-            # if newGetSet == chkFolder:
-            #     print("yes")
-            # else:
-            #     print("No")
+    #     if newGetSet in chkFolder:
+    #         shutil.copyfile(getfile, getExistingDir)
+    #         # myAppend.append("yes")
+    #         # print("yes")
+    #
+    #     else:
+    #         print("no")
+    #
+    # print(len(myAppend))
 
-                # print(os.path.isdir(vryFile))
-                # shutil.copyfile(getfile, vryFile)
+    # if newGetSet == chkFolder:
+    #     print("yes")
+    # else:
+    #     print("No")
 
-            # print(getnewFileExt)
-        else:
-            print("false")
+    # print(os.path.isdir(vryFile))
+    # shutil.copyfile(getfile, vryFile)
 
-        # for chkFolder in folderSide:
-        #     getExistingDir = os.path.join(chgeDirectory, chkFolder)
-        #     print(getExistingDir)
+    # print(getnewFileExt)
+    # else:
+    #     print("false")
+
+    # for chkFolder in folderSide:
+    #     getExistingDir = os.path.join(chgeDirectory, chkFolder)
+    #     print(getExistingDir)
 
 # for vryFile in fileSide:
 #
