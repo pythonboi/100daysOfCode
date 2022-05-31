@@ -13,7 +13,6 @@ getfileList = ' '
 newfileExt = []
 newSet = set()
 fullPath = ''
-# getExistingDir = ''
 
 if currentDirectory != chgeDirectory:
     os.chdir(chgeDirectory)
@@ -23,6 +22,17 @@ if currentDirectory != chgeDirectory:
     if qNewFolder == 'y':
 
         newFolder = input("Please Enter the name of the new Folder: ").title()
+
+        try:
+
+            if newFolder not in chgeDirectory:
+                os.mkdir(newFolder)
+                print(f"{newFolder} folder created successful")
+
+        except FileExistsError:
+            print(f"{newFolder} folder already exists")
+
+    else:
 
         if os.path.exists(chgeDirectory):
 
@@ -39,12 +49,12 @@ if currentDirectory != chgeDirectory:
             else:
                 fileSide.append(check)
 
-        if newFolder not in folderSide:
-            os.mkdir(newFolder)
-
-            print(f"{newFolder} folder created successful")
-        else:
-            print(f"{newFolder} folder already exits")
+        # if newFolder not in folderSide:
+        #     os.mkdir(newFolder)
+        #
+        #     print(f"{newFolder} folder created successful")
+        # else:
+        #     print(f"{newFolder} folder already exits")
 
         # Differentiate the file from the extension
 
@@ -86,15 +96,12 @@ if currentDirectory != chgeDirectory:
                 fullPath = os.path.join(chgeDirectory, vryFile)
 
             for chkFolder in folderSide:
-                # print(chkFolder)
+
                 getExistingDir = os.path.join(chgeDirectory, chkFolder)
 
                 try:
 
                     for word in newSet:
-
-                        # if word in fullPath and word in getExistingDir:
-                        #     print(shutil.move(fullPath, getExistingDir))
 
                         if word in fullPath and word in getExistingDir:
                             print(shutil.move(fullPath, getExistingDir))
@@ -105,12 +112,10 @@ if currentDirectory != chgeDirectory:
                 except shutil.Error:
                     print("file already exits")
 
-    else:
-        print("No folder created")
+        # print("No folder created")
 
 # urlLink = "https://www.youtube.com/watch?v=n3IYVthup9I"
 #
 # urlLink2 = "https://www.youtube.com/watch?v=PAMpNhx4maM"
 
 urlLink3 = "https://www.youtube.com/watch?v=isRtFdu8sRs"
-#
