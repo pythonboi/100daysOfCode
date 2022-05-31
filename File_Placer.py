@@ -94,11 +94,12 @@ if currentDirectory != chgeDirectory:
 
                     for word in newSet:
 
-                        if word not in fullPath and word in getExistingDir:
-                            print(f"{word} already exit in {fullPath}")
+                        if word in fullPath and word in getExistingDir:
+                            print(shutil.move(fullPath.lower(), getExistingDir))
 
-                        elif word in fullPath and word in getExistingDir:
-                            print(shutil.move(fullPath, getExistingDir))
+                        elif word not in fullPath and word in getExistingDir:
+                            continue
+                            # print(f"{word} already exit in {fullPath}")
 
                 except shutil.Error:
                     print("file already exits")
