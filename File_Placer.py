@@ -49,15 +49,6 @@ if currentDirectory != chgeDirectory:
             else:
                 fileSide.append(check)
 
-        # if newFolder not in folderSide:
-        #     os.mkdir(newFolder)
-        #
-        #     print(f"{newFolder} folder created successful")
-        # else:
-        #     print(f"{newFolder} folder already exits")
-
-        # Differentiate the file from the extension
-
         for f in fileSide:
 
             if os.path.isfile(f):
@@ -103,16 +94,16 @@ if currentDirectory != chgeDirectory:
 
                     for word in newSet:
 
-                        if word in fullPath and word in getExistingDir:
-                            print(shutil.move(fullPath, getExistingDir))
-
-                        elif word not in fullPath and word in getExistingDir:
+                        if word not in fullPath and word in getExistingDir:
                             print(f"{word} already exit in {fullPath}")
+
+                        elif word in fullPath and word in getExistingDir:
+                            print(shutil.move(fullPath, getExistingDir))
 
                 except shutil.Error:
                     print("file already exits")
-
-        # print("No folder created")
+                except FileNotFoundError:
+                    print("No such file or directory")
 
 # urlLink = "https://www.youtube.com/watch?v=n3IYVthup9I"
 #
