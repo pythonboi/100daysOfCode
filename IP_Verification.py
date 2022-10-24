@@ -18,6 +18,10 @@ with open(r"C:\Users\htukuru\OneDrive - Alithya\Desktop\ipchecklist.txt", 'r') a
     for read in ipread:
         newIpList.append(read.strip())
 
+print(newIpList)
+print(len(newIpList))
+
+
 path = r"C:\Users\htukuru\Downloads\dns_entry"
 
 for path, dirs, files in os.walk(path):
