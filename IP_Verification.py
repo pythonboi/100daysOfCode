@@ -11,7 +11,6 @@ matchedIps = []
 
 allIps = []
 
-ip = "45.79.98.50"
 
 with open(r"C:\Users\htukuru\OneDrive - Alithya\Desktop\ipchecklist.txt", 'r') as ipFile:
     ipread = ipFile.readlines()
@@ -47,3 +46,16 @@ for uni in allIps:
     uniqIPSet.add(uni)
 
 print(uniqIPSet)
+
+
+print("#####----Checking on the Confluence site-----#####")
+
+confEntry = r"C:\Users\htukuru\OneDrive - Alithya\Desktop\ConfluencIPList.txt"
+
+with open(confEntry, 'r') as conFile:
+    newConfile = conFile.read()
+    # print(newConfile)
+    for check in newIpList:
+
+        if check in newConfile:
+            print(check)
