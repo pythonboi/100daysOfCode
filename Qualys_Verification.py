@@ -5,6 +5,8 @@ qAssets = r"C:\Users\htukuru\OneDrive - Alithya\Documents\myQualysData1.csv"
 
 allAssets = r"C:\Users\htukuru\Downloads\AV_assets_athya9ht_20221119.csv"
 
+fullAssets = r"C:\Users\htukuru\Downloads\AI_Asset_List_athya9ht_20221122.csv"
+
 newEntry = []
 
 allEntry = []
@@ -23,30 +25,49 @@ yesNotShow = []
 
 toronto = []
 
+getAlithyaRegrx = []
+
 with open(qAssets, 'r') as dFile:
     csvRead = csv.reader(dFile)
     csvReader = csv.DictReader(dFile)
     # print(csvRead)
     for check in csvRead:
+
+        # invRegrex = re.findall(r"[\w-]+", check)
+        # newRegrex = invRegrex[0]
+        # getAlithyaRegrx.append(newRegrex)
+
         newEntry.append(check[1].lower())
 
         if check[2] == 'Yes':
             withYes.append(check[1].lower())
+
         if check[0] == "Toronto" and check[2] == "Yes":
             toronto.append(check[1].lower())
 
-            # print(check)
+        # print(check)
 
-print(withYes)
+    for check[1] in withYes:
+            #print(h)
+        invRegrex = re.findall(r"[\w-]+", check[1])
+        newRegrex = invRegrex
+        getAlithyaRegrx.append(newRegrex)
+
+print(f"This is from Alithya Regrex master inventory {getAlithyaRegrx}")
+
+print(f"This is the Total of all Inventory from the Master Inventory list {len(newEntry)}")
+# print(f"This is from newEntry from master inventory list: {newEntry} ")
+# print(withYes)
 print(f"Here is the total number of Qualys Install with Yes {len(withYes)}")
 # print(len(withYes))
 
 
-with open(allAssets, 'r') as file:
+
+with open(fullAssets, 'r') as file:
     Reader = csv.reader(file)
 
     for read in Reader:
-        allEntry.append(read[1].lower())
+        allEntry.append(read[2].lower())
 
         for call in allEntry:
             #     dsearch = re.search(r"[\w-]+", call)
@@ -106,8 +127,21 @@ print("This is with the Regrex below:")
 print(newNameExits)
 print(len(newNameExits))
 
-print(f"Qualys with Yes but not showing as name exists {yesNotShow}")
-print(f"Number of Yes installed but not showing in Qualys {len(yesNotShow)}")
+# To get Qualys with Yes and not found on the Qualys Web portal
 
-print(f"This is for Toronto Site: {toronto}")
-print(f"this is the total count of Toronto server {len(toronto)}")
+# print(f"Qualys with Yes but not showing as name exists {yesNotShow}")
+# print(f"Number of Yes installed but not showing in Qualys {len(yesNotShow)}")
+
+
+# to Get Toronto servers
+
+# print(f"This is for Toronto Site: {toronto}")
+# print(f"this is the total count of Toronto server {len(toronto)}")
+
+#
+# for h in newEntry:
+#
+    # invRegrex = re.findall(r"[\w-]+", h)
+    # getAlithyaRegrx.append(invRegrex)
+
+
