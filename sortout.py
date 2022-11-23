@@ -1,13 +1,13 @@
 import re
 import csv
 
-hypens = []
-
 inventoryFound = []
 
 allAssestsFound = []
 
 assestsExist = []
+
+qualysInstall = []
 
 internalAssets = r"C:\Users\htukuru\OneDrive - Alithya\Documents\myQualysData1.csv"
 
@@ -25,6 +25,12 @@ with open(internalAssets, 'r') as file:
         inventoryFound.append(firstGroup)
         # print(firstGroup)
 
+        if read[2] == "Yes":
+            qualysInstall.append(read[1].lower())
+
+    print(qualysInstall)
+    print(len(qualysInstall))
+
     print("End of the Master Inventory data")
     print("##################################################################################")
 
@@ -40,18 +46,14 @@ with open(internalAssets, 'r') as file:
 
     for check in inventoryFound and allAssestsFound:
         if check in inventoryFound and allAssestsFound:
-            print(check)
-        # for checknow in allAssestsFound:
-        #     if check in inventoryFound and
-        #print(check)
-        # if check in firstGroup and allassestResult:
-        #     assestsExist.append(check)
+            pass
+
+            # print(check)
+
+
+
 
 print("Below are the names of Qualys installed on servers and on Qualys portal ")
 print(f"{assestsExist}")
 print(len(assestsExist))
 
-# readName = re.findall(r"\w+-\w+", read[1])
-# readName2Dash = re.findall(r"[\w-]+", read[1])
-# dDash.append(readName2Dash)
-# print(readMe)
