@@ -11,6 +11,8 @@ qualysInstall = []
 
 uniqueName = set()
 
+installedNotInQualys = []
+
 internalAssets = r"C:\Users\htukuru\OneDrive - Alithya\Documents\myQualysData1.csv"
 
 allAsessts = r"C:\Users\htukuru\Downloads\AI_Asset_List_athya9ht_20221122.csv"
@@ -31,11 +33,14 @@ with open(internalAssets, 'r') as file:
 
     # print(qualysInstall)
     # print(len(qualysInstall))
-    print(inventoryFound)
-    print(len(inventoryFound))
 
-    print("End of the Master Inventory data")
-    print("##################################################################################")
+    # Pause print output for now
+
+    # print(inventoryFound)
+    # print(len(inventoryFound))
+    #
+    # print("End of the Master Inventory data")
+    # print("##################################################################################")
 
     with open(allAsessts, "r") as asstFile:
         allAssestReader = csv.reader(asstFile)
@@ -55,9 +60,22 @@ with open(internalAssets, 'r') as file:
     for unique in assestsExist:
         uniqueName.add(unique)
 
+    for uniq in inventoryFound:
+
+        if uniq not in uniqueName:
+            installedNotInQualys.append(uniq)
+
+    #for writes in installedNotInQualys:
+
+
+
 print("Below are the names of Qualys installed on servers and on Qualys portal ")
-print(f"{assestsExist}")
+# print(f"{assestsExist}")
 print(len(assestsExist))
 
 print(uniqueName)
 print(len(uniqueName))
+
+print("############ Below is the servers Qualys is installed but not showing in Qualys Portal:")
+print(f"Servers not in Qualys: {installedNotInQualys}")
+print(len(installedNotInQualys))
