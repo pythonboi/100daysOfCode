@@ -17,6 +17,10 @@ internalAssets = r"C:\Users\htukuru\OneDrive - Alithya\Documents\myQualysData1.c
 
 allAsessts = r"C:\Users\htukuru\Downloads\AI_Asset_List_athya9ht_20221122.csv"
 
+# allAssestsView = r"C:\Users\htukuru\Downloads\AV_assets_athya9ht_20221125.csv"
+
+allAssestsView = r"C:\Users\htukuru\Downloads\AV_assets_athya9ht_20221126.csv"
+
 with open(internalAssets, 'r') as file:
     myReader = csv.reader(file)
     for read in myReader:
@@ -42,11 +46,13 @@ with open(internalAssets, 'r') as file:
     # print("End of the Master Inventory data")
     # print("##################################################################################")
 
-    with open(allAsessts, "r") as asstFile:
+    # with open(allAsessts, "r") as asstFile:
+    with open(allAssestsView, "r") as asstFile:
         allAssestReader = csv.reader(asstFile)
 
         for newRead in allAssestReader:
-            allassetsSearch = re.search(r"([\w+-]+)", newRead[2].lower())
+            # allassetsSearch = re.search(r"([\w+-]+)", newRead[2].lower())
+            allassetsSearch = re.search(r"([\w+-]+)", newRead[1].lower())
             allassestResult = allassetsSearch.group()
             allAssestsFound.append(allassestResult)
 
@@ -65,8 +71,11 @@ with open(internalAssets, 'r') as file:
         if uniq not in uniqueName:
             installedNotInQualys.append(uniq)
 
-    #for writes in installedNotInQualys:
+# To write the data to a csv file
 
+    with open("askida_qualys.csv", "w") as wfile:
+        newWriter = csv.writer(wfile)
+        newWriter.writerow(installedNotInQualys)
 
 
 print("Below are the names of Qualys installed on servers and on Qualys portal ")
