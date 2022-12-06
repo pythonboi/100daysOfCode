@@ -1,5 +1,6 @@
 import time
-
+import re
+#
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -7,12 +8,11 @@ from selenium.webdriver.chrome.service import Service
 
 from time import sleep
 
+failedTicket = []
+ticRegex = []
+
 chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
-
-# options = webdriver.ChromeOptions()
-# options.add_experimental_option("detach", True)
-#driver = webdriver.Chrome(chrome_options=options, service="C:\Drivers\chromedriver_win32\chromedriver.exe")
 
 driver = webdriver.Chrome(options=chrome_options)
 
@@ -22,7 +22,7 @@ driver.get("https://helpdesk.alithya.com/a/tickets/view/178891?default_query=0")
 
 driver.maximize_window()
 
-driver.find_element(By.XPATH, "/html/body/div[4]/div[2]/div/div/div/div/div/div[2]/div[1]/div/button").click()
+driver.find_element(By.XPATH, '/html/body/div[4]/div[2]/div/div/div/div/div/div[2]/div[1]/div/button').click()
 
 driver.implicitly_wait(10)
 
@@ -46,13 +46,51 @@ myTitle = "Sign in to your account"
 if getTitle == myTitle:
     driver.find_element(By.XPATH, "/html/body/div/form/div/div/div[2]/div[1]/div/div/div/div/div/div[3]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input").click()
 
+driver.implicitly_wait(15)
+
+tickets = driver.find_elements(By.PARTIAL_LINK_TEXT, "[Failed]")
 
 
-driver.implicitly_wait(20)
+for ticket in tickets:
+
+    failedTicket.append(ticket.text)
+
+print(failedTicket)
+
+# time.sleep(5)
+
+for readRegex in failedTicket:
+    reGex = re.search(r"[-](\d+)", readRegex)
+
+    ticRegex.append(reGex.group(1))
+
+print(ticRegex)
+print(len(ticRegex))
+
+driver.implicitly_wait(10)
 
 
 
-time.sleep(40)
+for count in ticRegex:
+
+    numb = driver.find_element(By.ID, "header_search").send_keys(count)
+    driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div[2]/div/div[4]/form/div/div/div/section/ul/li/a").click()
+    time.sleep(3)
+    # This is click to view more of the ticket description
+    driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/button").click()
+    time.sleep(7)
+    if count in ticRegex:
+        getnoteText = driver.find_element(By.CSS_SELECTOR, "span[style='color: #00B050;']").text
+    print(getnoteText)
+
+
+# This is opening a new tab within the web-browser window
+
+# driver.switch_to.new_window()
+# driver.switch_to.window(driver.window_handles[1])
+
+
+# time.sleep(40)
 
 
 
