@@ -7,10 +7,10 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
 from time import sleep
-#failedTicket = ["AlithyaMontreal - [Failed] offsite AL-MTLW-FS01-IM\\Backup Job ALMTLW-FS...  #INC-99781', 'AlithyaMontreal - [Failed] offsite AL-MTL-WS-MON-IM\\Backup-AL-MTL-WS-M...  #INC-99780', 'AlithyaMontreal - [Failed] Offsite Northstar_Dev3-IM\\Backup Job...  #INC-99779', 'AlithyaMontreal - [Failed] offsite ALMTLW-DC01-IM\\Backup Job ALMTLW-DC...  #INC-99777', 'AlithyaMontreal - [Failed] Offsite-NorthStar_dev1-IM\\Back...  #INC-99776', 'AlithyaMontreal - [Failed] offsite AL-MTLW-FS01-IM\\Backup Job ALMTLW-FS...  #INC-99771', 'AlithyaMontreal - [Failed] Offsite Northstar_Dev3-IM\\Backup Job...  #INC-99767', 'AlithyaMontreal - [Failed] offsite AL-MTL-WS-MON-IM\\Backup-AL-MTL-WS-M...  #INC-99766', 'AlithyaMontreal - [Failed] Offsite Geoahall-IM\\Backup Job GeoAHall (1 VMs)  #INC-99765"]
+
 failedTicket = []
 ticRegex = []
-#
+
 chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
 
@@ -23,8 +23,6 @@ driver.get("https://helpdesk.alithya.com/a/tickets/view/178891?default_query=0")
 driver.maximize_window()
 
 driver.find_element(By.XPATH, '/html/body/div[4]/div[2]/div/div/div/div/div/div[2]/div[1]/div/button').click()
-
-#
 
 driver.implicitly_wait(10)
 
@@ -69,21 +67,27 @@ for readRegex in failedTicket:
 print(ticRegex)
 print(len(ticRegex))
 
+driver.implicitly_wait(10)
 
-#[-](\d+)
 
-# for tick in failedTicket:
-#     driver.switch_to.new_window(tick)
-#     driver.execute_script()
-#     driver.implicitly_wait(15)
-#     driver.close()
 
-#/html/body/div[1]/div[8]/div[2]/div[1]/div/div/div[1]/div[3]/div[3]/section[2]/div[2]/div[1]/table/tbody/tr[1]/td[6]/div/a
+for count in ticRegex:
 
-#driver.implicitly_wait(20)
+    numb = driver.find_element(By.ID, "header_search").send_keys(count)
+    driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div[2]/div/div[4]/form/div/div/div/section/ul/li/a").click()
+    time.sleep(3)
+    # This is click to view more of the ticket description
+    driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/button").click()
+    time.sleep(7)
+    if count in ticRegex:
+        getnoteText = driver.find_element(By.CSS_SELECTOR, "span[style='color: #00B050;']").text
+    print(getnoteText)
 
-#ember-view subject-cell ember-tooltip-target
 
+# This is opening a new tab within the web-browser window
+
+# driver.switch_to.new_window()
+# driver.switch_to.window(driver.window_handles[1])
 
 
 # time.sleep(40)
