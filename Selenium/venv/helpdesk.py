@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.select import Select
 
 from time import sleep
 
@@ -21,6 +22,8 @@ myService = Service("C:\Drivers\chromedriver_win32\chromedriver.exe")
 driver.get("https://helpdesk.alithya.com/a/tickets/view/178891?default_query=0")
 
 driver.maximize_window()
+
+driver.implicitly_wait(2)
 
 driver.find_element(By.XPATH, '/html/body/div[4]/div[2]/div/div/div/div/div/div[2]/div[1]/div/button').click()
 
@@ -74,14 +77,32 @@ driver.implicitly_wait(10)
 for count in ticRegex:
 
     numb = driver.find_element(By.ID, "header_search").send_keys(count)
+    print("The is printing nothing None")
+    print(numb)
     driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div[2]/div/div[4]/form/div/div/div/section/ul/li/a").click()
     time.sleep(3)
     # This is click to view more of the ticket description
     driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/button").click()
-    time.sleep(7)
+    time.sleep(2)
     if count in ticRegex:
-        getnoteText = driver.find_element(By.CSS_SELECTOR, "span[style='color: #00B050;']").text
-    print(getnoteText)
+        print("I got here")
+        try:
+
+            getnoteText = driver.find_element(By.CSS_SELECTOR, "span[style='color: #00B050;']").text
+            print("I am here")
+            print(getnoteText)
+
+            if getnoteText == "Success":
+
+                driver.find_element(By.CSS_SELECTOR, "span[class='ember-power-select-selected-item']").send_keys()
+                sel = Select(driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click())
+
+                sel.select_by_visible_text("Closed")
+        except:
+            print("This is for Error or Warning status found")
+
+
+    #print(getnoteText)
 
 
 # This is opening a new tab within the web-browser window
