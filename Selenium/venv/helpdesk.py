@@ -42,7 +42,6 @@ driver.find_element(By.XPATH, "/html/body/div/form[1]/div/div/div[2]/div[1]/div/
 
 driver.implicitly_wait(10)
 
-
 getTitle = driver.title
 myTitle = "Sign in to your account"
 
@@ -53,14 +52,11 @@ driver.implicitly_wait(15)
 
 tickets = driver.find_elements(By.PARTIAL_LINK_TEXT, "[Failed]")
 
-
 for ticket in tickets:
 
     failedTicket.append(ticket.text)
 
 print(failedTicket)
-
-# time.sleep(5)
 
 for readRegex in failedTicket:
     reGex = re.search(r"[-](\d+)", readRegex)
@@ -72,34 +68,58 @@ print(len(ticRegex))
 
 driver.implicitly_wait(10)
 
-
-
 for count in ticRegex:
 
-    numb = driver.find_element(By.ID, "header_search").send_keys(count)
-    print("The is printing nothing None")
-    print(numb)
+    driver.find_element(By.ID, "header_search").send_keys(count)
+
     driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div[2]/div/div[4]/form/div/div/div/section/ul/li/a").click()
     time.sleep(3)
     # This is click to view more of the ticket description
     driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/button").click()
     time.sleep(2)
-    if count in ticRegex:
-        print("I got here")
-        try:
 
-            getnoteText = driver.find_element(By.CSS_SELECTOR, "span[style='color: #00B050;']").text
-            print("I am here")
-            print(getnoteText)
+    try:
 
-            if getnoteText == "Success":
+        getnoteText = driver.find_element(By.CSS_SELECTOR, "span[style='color: #00B050;']").text
+        # print(getnoteText)
 
-                driver.find_element(By.CSS_SELECTOR, "span[class='ember-power-select-selected-item']").send_keys()
-                sel = Select(driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click())
+        if getnoteText == "Success":
+            sel = driver.find_element(By.XPATH,
+                                         "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click()
 
-                sel.select_by_visible_text("Closed")
-        except:
-            print("This is for Error or Warning status found")
+            sname = driver.find_element(By.CLASS_NAME, "span[class='ember-power-select-selected-item']").text
+            print("Printing CSS collector")
+            print(sname)
+
+        else:
+            print("Error")
+
+    except:
+        print("This is for Error or Warning status found")
+
+
+# modify this code by putting it below
+#     if count in ticRegex:
+#         print("I got here")
+#         try:
+#
+#             getnoteText = driver.find_element(By.CSS_SELECTOR, "span[style='color: #00B050;']").text
+#             print("I am here")
+#             print(getnoteText)
+#
+#             if getnoteText == "Success":
+#
+#                 #driver.find_element(By.CSS_SELECTOR, "span[class='ember-power-select-selected-item']").send_keys()
+#                 sel = Select(driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click())
+#                 # driver.find_element(By.CSS_SELECTOR, "span[class='ember-power-select-selected-item']").click()
+#                 driver.find_element(By.XPATH, "//li[@class='Closed']").click()
+#
+#                 sel.select_by_visible_text("Closed")
+#                 #sel.select_by_index("4")
+#                 sel.select_by_value("4")
+#                 driver.implicitly_wait(2)
+#         except:
+#             print("This is for Error or Warning status found")
 
 
     #print(getnoteText)
