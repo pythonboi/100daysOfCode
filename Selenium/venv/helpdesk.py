@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.support.ui import Select
 
 from time import sleep
 
@@ -51,8 +52,13 @@ if getTitle == myTitle:
 driver.implicitly_wait(15)
 
 tickets = driver.find_elements(By.PARTIAL_LINK_TEXT, "[Failed]")
+ticketYellow = driver.find_elements(By.PARTIAL_LINK_TEXT, "[Warning]")
 
 for ticket in tickets:
+
+    failedTicket.append(ticket.text)
+
+for ticket in ticketYellow:
 
     failedTicket.append(ticket.text)
 
@@ -81,48 +87,29 @@ for count in ticRegex:
     try:
 
         getnoteText = driver.find_element(By.CSS_SELECTOR, "span[style='color: #00B050;']").text
-        # print(getnoteText)
 
         if getnoteText == "Success":
-            sel = driver.find_element(By.XPATH,
+
+            driver.find_element(By.XPATH,
                                          "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click()
 
-            sname = driver.find_element(By.CLASS_NAME, "span[class='ember-power-select-selected-item']").text
-            print("Printing CSS collector")
-            print(sname)
+            # This is selecting the close button
+            driver.find_element(By.XPATH, "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[5]").click()
 
-        else:
-            print("Error")
+            driver.implicitly_wait(5)
+
+            # This is for scrolling down on the Properties section
+            scrollMe = driver.find_element(By.ID, "widgets-sidebar")
+
+            driver.execute_script("arguments[0].scrollIntoView(true);", scrollMe);
+
+            driver.implicitly_wait(5)
+
+
 
     except:
         print("This is for Error or Warning status found")
 
-
-# modify this code by putting it below
-#     if count in ticRegex:
-#         print("I got here")
-#         try:
-#
-#             getnoteText = driver.find_element(By.CSS_SELECTOR, "span[style='color: #00B050;']").text
-#             print("I am here")
-#             print(getnoteText)
-#
-#             if getnoteText == "Success":
-#
-#                 #driver.find_element(By.CSS_SELECTOR, "span[class='ember-power-select-selected-item']").send_keys()
-#                 sel = Select(driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click())
-#                 # driver.find_element(By.CSS_SELECTOR, "span[class='ember-power-select-selected-item']").click()
-#                 driver.find_element(By.XPATH, "//li[@class='Closed']").click()
-#
-#                 sel.select_by_visible_text("Closed")
-#                 #sel.select_by_index("4")
-#                 sel.select_by_value("4")
-#                 driver.implicitly_wait(2)
-#         except:
-#             print("This is for Error or Warning status found")
-
-
-    #print(getnoteText)
 
 
 # This is opening a new tab within the web-browser window
