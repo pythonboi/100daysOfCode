@@ -52,8 +52,13 @@ if getTitle == myTitle:
 driver.implicitly_wait(15)
 
 tickets = driver.find_elements(By.PARTIAL_LINK_TEXT, "[Failed]")
+ticketYellow = driver.find_elements(By.PARTIAL_LINK_TEXT, "[Warning]")
 
 for ticket in tickets:
+
+    failedTicket.append(ticket.text)
+
+for ticket in ticketYellow:
 
     failedTicket.append(ticket.text)
 
