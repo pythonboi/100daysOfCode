@@ -7,6 +7,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver import ActionChains
+
 
 from time import sleep
 
@@ -99,11 +101,33 @@ for count in ticRegex:
             driver.implicitly_wait(5)
 
             # This is for scrolling down on the Properties section
-            scrollMe = driver.find_element(By.ID, "widgets-sidebar")
+            # scrollMe = driver.find_element(By.XPATH, "/html")
 
-            driver.execute_script("arguments[0].scrollIntoView(true);", scrollMe);
+            # ac = ActionChains(driver)
+            # ac.move_to_element(scrollMe).perform()
 
+            driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+
+            time.sleep(3)
+
+
+            #driver.execute_script("arguments[0].scrollIntoView(true);", scrollMe);
+            #
+            # driver.implicitly_wait(5)
+
+            driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div[1]/button[3]/span[1]").click()
+            #
             driver.implicitly_wait(5)
+            # This is for the writing on the txt field
+            driver.find_element(By.XPATH,
+                                "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[3]/div[1]/div/div/div[3]/div/p").send_keys("The backup job was successful ")
+
+            time.sleep(5)
+
+            #
+            driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[5]/div/div[2]/div/div/button").click()
+
+            time.sleep(10)
 
 
 
