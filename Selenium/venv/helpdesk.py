@@ -121,12 +121,18 @@ for count in ticRegex:
 
             time.sleep(3)
 
+            scrollAgent = driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]")
+            driver.execute_script("arguments[0].scrollIntoView(true);", scrollAgent);
+
+            time.sleep(3)
 
             # This is for selecting the Agent
             driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]").click()
 
             #This is for selecting the Agent name/user
             driver.find_element(By.XPATH, "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[4]").click()
+
+            time.sleep(3)
 
 
             # driver.find_element(By.XPATH,
@@ -135,8 +141,6 @@ for count in ticRegex:
             #
             # # This is for the Agent selection
             # driver.find_element(By.XPATH, "/html/body/div[2]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[3]").click()
-
-
 
     except:
         print("This is for Error or Warning status found")
