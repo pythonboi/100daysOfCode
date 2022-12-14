@@ -7,6 +7,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver import ActionChains
+
 
 from time import sleep
 
@@ -90,20 +92,49 @@ for count in ticRegex:
 
         if getnoteText == "Success":
 
+            #driver.execute_script("arguments[0].scrollIntoView(true);", scrollMe);
+            #
+            # driver.implicitly_wait(5)
+
+            # This click on the Add button
+            # driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div[1]/button[3]/span[1]").click()
+            # #
+            # driver.implicitly_wait(5)
+            # # This is for the writing on the txt field
+            # driver.find_element(By.XPATH,
+            #                     "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[3]/div[1]/div/div/div[3]/div/p").send_keys("The backup job was successful ")
+            #
+            # # time.sleep(5)
+            #
+            # # This click the update button
+            # driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[5]/div/div[2]/div/div/button").click()
+            #
+            # time.sleep(5)
+
+            #This is for clicking the drop down button for the Status
             driver.find_element(By.XPATH,
-                                         "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click()
+                                "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click()
 
-            # This is selecting the close button
-            driver.find_element(By.XPATH, "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[5]").click()
+            # This is for selecting the close button
+            driver.find_element(By.XPATH,
+                                "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[5]").click()
 
-            driver.implicitly_wait(5)
+            time.sleep(3)
 
-            # This is for scrolling down on the Properties section
-            scrollMe = driver.find_element(By.ID, "widgets-sidebar")
 
-            driver.execute_script("arguments[0].scrollIntoView(true);", scrollMe);
+            # This is for selecting the Agent
+            driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]").click()
 
-            driver.implicitly_wait(5)
+            #This is for selecting the Agent name/user
+            driver.find_element(By.XPATH, "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[4]").click()
+
+
+            # driver.find_element(By.XPATH,
+            #                     "/html/body/div[2]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[10]/div/div[1]/span[1]").click()
+            #
+            #
+            # # This is for the Agent selection
+            # driver.find_element(By.XPATH, "/html/body/div[2]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[3]").click()
 
 
 
