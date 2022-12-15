@@ -7,8 +7,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.select import Select
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver import ActionChains
 
 
 from time import sleep
@@ -27,7 +25,9 @@ driver.get("https://helpdesk.alithya.com/a/tickets/view/178891?default_query=0")
 
 driver.maximize_window()
 
-driver.implicitly_wait(2)
+#driver.implicitly_wait(2)
+
+time.sleep(2)
 
 driver.find_element(By.XPATH, '/html/body/div[4]/div[2]/div/div/div/div/div/div[2]/div[1]/div/button').click()
 
@@ -95,31 +95,24 @@ for count in ticRegex:
 
     try:
 
-        # getnoteText = driver.find_element(By.CSS_SELECTOR, "span[style='color: #00B050;']").text
-        # print(getnoteText)
-
-        #yelloWarning = driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/div/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table/tbody/tr[7]/td[2]/span").text
-
-        # yelloWarning = driver.find_element(By.CSS_SELECTOR, "span[style='color: #FFC000;']").text
-        # print(yelloWarning)
-
         if getnoteText == "Success" or getnoteText == "Warning":
 
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
             # This click on the Add button
-            # driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div[1]/button[3]/span[1]").click()
-            # #
+            driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div[1]/button[3]/span[1]").click()
+            #
             # driver.implicitly_wait(5)
-            # # This is for the writing on the txt field
-            # driver.find_element(By.XPATH,
-            #                     "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[3]/div[1]/div/div/div[3]/div/p").send_keys("The backup job was successful ")
-            #
-            # # time.sleep(5)
-            #
-            # # This click the update button
-            # driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[5]/div/div[2]/div/div/button").click()
-            #
-            # time.sleep(5)
+            # This is for the writing on the txt field
+            driver.find_element(By.XPATH,
+                                "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[3]/div[1]/div/div/div[3]/div/p").send_keys("The backup job was successful ")
+
+            time.sleep(5)
+
+            # This click the update button
+            driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[5]/div/div[2]/div/div/button").click()
+
+            time.sleep(5)
 
             #This is for clicking the drop down button for the Status
             driver.find_element(By.XPATH,
@@ -127,7 +120,7 @@ for count in ticRegex:
 
             # This is for selecting the close button
             driver.find_element(By.XPATH,
-                                "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[5]").click()
+                                "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[6]").click()
 
             time.sleep(3)
 
@@ -135,7 +128,6 @@ for count in ticRegex:
             driver.execute_script("arguments[0].scrollIntoView(true);", scrollAgent);
 
             time.sleep(3)
-
 
             # This is for selecting the Agent
             driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]").click()
@@ -161,67 +153,18 @@ for count in ticRegex:
             driver.find_element(By.XPATH,
                                 "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[11]").click()
 
+            time.sleep(2)
+
             # The update button
             driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/div/div/button").click()
 
             time.sleep(5)
 
-        # elif yelloWarning == "Warning":
-        #     # This is for clicking the drop down button for the Status
-        #     driver.find_element(By.XPATH,
-        #                         "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click()
-        #
-        #     # This is for selecting the close button
-        #     driver.find_element(By.XPATH,
-        #                         "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[5]").click()
-        #
-        #     time.sleep(3)
-        #
-        #     scrollAgent = driver.find_element(By.XPATH,
-        #                                       "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]")
-        #     driver.execute_script("arguments[0].scrollIntoView(true);", scrollAgent);
-        #
-        #     time.sleep(3)
-        #
-        #     # This is for selecting the Agent
-        #     driver.find_element(By.XPATH,
-        #                         "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]").click()
-        #
-        #     # This is for selecting the Agent name/user
-        #     driver.find_element(By.XPATH,
-        #                         "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[4]").click()
-        #
-        #     time.sleep(3)
-        #
-        #     # The update button
-        #     driver.find_element(By.XPATH,
-        #                         "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/div/div/button").click()
-        #
-        #     time.sleep(5)
-
     except:
-        print("This is for Error or Warning status found")
+        print("This is for Error status found")
 
+#time.sleep(5)
 
-# def statusReport(color):
-#     for chck in color:
-#         if chck == ""
-#
-# statusReport(color)
-
-# This is opening a new tab within the web-browser window
-
-# driver.switch_to.new_window()
-# driver.switch_to.window(driver.window_handles[1])
-
-
-time.sleep(5)
-
-if sys.exit() == 0:
-    print("All tasks completed successful")
-    driver.close()
-
-
-
-
-
+# if sys.exit() == 0:
+#     print("All tasks completed successful")
+#     driver.close()
