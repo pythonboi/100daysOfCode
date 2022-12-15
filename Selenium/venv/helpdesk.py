@@ -1,14 +1,9 @@
 import sys
-import time
 import re
-#
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.support.select import Select
-
-
 from time import sleep
 
 failedTicket = []
@@ -24,8 +19,6 @@ myService = Service("C:\Drivers\chromedriver_win32\chromedriver.exe")
 driver.get("https://helpdesk.alithya.com/a/tickets/view/178891?default_query=0")
 
 driver.maximize_window()
-
-#driver.implicitly_wait(2)
 
 time.sleep(2)
 
@@ -101,8 +94,7 @@ for count in ticRegex:
 
             # This click on the Add button
             driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div[1]/button[3]/span[1]").click()
-            #
-            # driver.implicitly_wait(5)
+
             # This is for the writing on the txt field
             driver.find_element(By.XPATH,
                                 "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[3]/div[1]/div/div/div[3]/div/p").send_keys("The backup job was successful ")
@@ -162,9 +154,3 @@ for count in ticRegex:
 
     except:
         print("This is for Error status found")
-
-#time.sleep(5)
-
-# if sys.exit() == 0:
-#     print("All tasks completed successful")
-#     driver.close()
