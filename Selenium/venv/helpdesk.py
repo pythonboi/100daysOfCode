@@ -1,5 +1,6 @@
 import sys
 import re
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -8,6 +9,8 @@ from time import sleep
 
 failedTicket = []
 ticRegex = []
+
+server_Site = {}
 
 chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
@@ -90,6 +93,7 @@ for count in ticRegex:
 
         if getnoteText == "Success" or getnoteText == "Warning":
 
+            # Scroll down to the bottom page of the main window page
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
             # This click on the Add button
@@ -148,7 +152,8 @@ for count in ticRegex:
             time.sleep(2)
 
             # The update button
-            driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/div/div/button").click()
+            driver.find_element(By.ID, "form-submit").click()
+            #driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/div/div/button").click()
 
             time.sleep(5)
 
