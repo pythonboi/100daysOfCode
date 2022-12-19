@@ -86,10 +86,19 @@ for count in ticRegex:
     driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/button").click()
     time.sleep(2)
 
-    getnoteText = driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/div/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table/tbody/tr[7]/td[2]/span").text
-    print(getnoteText)
+    # driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    #
+    # getnoteText = driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/div/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table/tbody/tr[7]/td[2]/span").text
+    # print(getnoteText)
 
     try:
+
+        # getnoteText = driver.find_element(By.XPATH,
+        #                                   "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/div/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table/tbody/tr[7]/td[2]/span").text
+        # print(getnoteText)
+
+        getnoteText = driver.find_element(By.XPATH, "//*[@class='view-more-component is-open has-view-more ']//table//tbody//td/span[contains(text(), 'Success')]").text
+        print(getnoteText)
 
         if getnoteText == "Success" or getnoteText == "Warning":
 
@@ -157,5 +166,8 @@ for count in ticRegex:
 
             time.sleep(5)
 
+
+
     except:
-        print("This is for Error status found")
+        print("Error found in the code")
+
