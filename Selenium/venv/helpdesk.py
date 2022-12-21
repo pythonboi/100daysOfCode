@@ -97,7 +97,7 @@ for count in ticRegex:
         #                                   "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/div/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table/tbody/tr[7]/td[2]/span").text
         # print(getnoteText)
 
-        getnoteText = driver.find_element(By.XPATH, "//*[@class='view-more-component is-open has-view-more ']//table//tbody//td/span[contains(text(), 'Success')]").text
+        getnoteText = driver.find_element(By.XPATH, "//*[@class='view-more-component is-open has-view-more ']//table//tbody//td/span[contains(text()]").text
         print(getnoteText)
 
         if getnoteText == "Success" or getnoteText == "Warning":
@@ -166,7 +166,8 @@ for count in ticRegex:
 
             time.sleep(5)
 
-
+        else:
+            print("Backup status is Error")
 
     except:
         print("Error found in the code")
