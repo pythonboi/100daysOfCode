@@ -10,8 +10,6 @@ from time import sleep
 failedTicket = []
 ticRegex = []
 
-server_Site = {}
-
 chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
 
@@ -80,10 +78,6 @@ for count in ticRegex:
 
     driver.find_element(By.ID, "header_search").send_keys(count)
 
-    # driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div[2]/div/div[4]/form/div/div/div/section/ul/li/a").click()
-
-    #driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div[2]/div/div[5]/form/div/div/div/section/ul/li/a").click()
-
     driver.find_element(By.XPATH, "//li[@class='spotlight_result']/a").click()
 
     time.sleep(3)
@@ -93,20 +87,11 @@ for count in ticRegex:
     driver.find_element(By.XPATH, "//div[@class='view-more-component is-closed has-view-more ']/button").click()
     time.sleep(2)
 
-
     try:
-
-        # getnoteTextColor = driver.find_element(By.XPATH,
-        #                                   "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/div/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table/tbody/tr[7]/td[2]/span").text
-        # print(getnoteTextColor)
 
         getnoteText = driver.find_element(By.XPATH,
                                           "//*[@class='view-more-component is-open has-view-more ']//table//tbody//td/span[contains(text(), 'Success') or contains(text(), 'Warning')]").text
         print(getnoteText)
-
-        # getnoteText = driver.find_element(By.XPATH, "//*[@class='view-more-component is-open has-view-more ']//table//tbody//td/span[contains(text(), 'Warning')]").text
-        # print(getnoteText)
-
 
         if getnoteText == "Success" or getnoteText == "Warning":
 
@@ -114,7 +99,6 @@ for count in ticRegex:
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
             # This click on the Add button
-            #driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div[1]/button[3]/span[1]").click()
 
             driver.find_element(By.XPATH, "//div[@class='tkt-convo-buttons-container']/button[3]/span[1]").click()
 
@@ -127,7 +111,6 @@ for count in ticRegex:
             time.sleep(5)
 
             # This click the update button
-            # driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[5]/div/div[2]/div/div/button").click()
 
             driver.find_element(By.XPATH, "//div[@class='btn-group send-and-set']/button").click()
 
@@ -158,8 +141,6 @@ for count in ticRegex:
 
             # This is for selecting the Agent
             driver.find_element(By.XPATH, "/html/body/div[1]/div[9]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]").click()
-
-            ##driver.find_element(By.XPATH, "//div[@class='ember-power-select-trigger ember-basic-dropdown-trigger ember-basic-dropdown-trigger--in-place ember-view']/div[8]/div/div[1]/span[3]").click()
 
             #This is for selecting the Agent name/user
             driver.find_element(By.XPATH, "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[4]").click()
