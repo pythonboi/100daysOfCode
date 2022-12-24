@@ -80,49 +80,67 @@ for count in ticRegex:
 
     driver.find_element(By.ID, "header_search").send_keys(count)
 
-    driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div[2]/div/div[4]/form/div/div/div/section/ul/li/a").click()
+    # driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div[2]/div/div[4]/form/div/div/div/section/ul/li/a").click()
+
+    #driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div[2]/div/div[5]/form/div/div/div/section/ul/li/a").click()
+
+    driver.find_element(By.XPATH, "//li[@class='spotlight_result']/a").click()
+
     time.sleep(3)
     # This is click to view more of the ticket description
-    driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/button").click()
+    #driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/button").click()
+    #driver.find_element(By.XPATH, "/html/body/div[1]/div[9]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/button").click()
+    driver.find_element(By.XPATH, "//div[@class='view-more-component is-closed has-view-more ']/button").click()
     time.sleep(2)
 
-    # driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    #
-    # getnoteText = driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/div/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table/tbody/tr[7]/td[2]/span").text
-    # print(getnoteText)
 
     try:
 
-        getnoteTextColor = driver.find_element(By.XPATH,
-                                          "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/div/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table/tbody/tr[7]/td[2]/span").text
-        print(getnoteTextColor)
+        # getnoteTextColor = driver.find_element(By.XPATH,
+        #                                   "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/div/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table/tbody/tr[7]/td[2]/span").text
+        # print(getnoteTextColor)
 
-        getnoteText = driver.find_element(By.XPATH, "//*[@class='view-more-component is-open has-view-more ']//table//tbody//td/span[contains(text(), 'Warning')]").text
+        getnoteText = driver.find_element(By.XPATH,
+                                          "//*[@class='view-more-component is-open has-view-more ']//table//tbody//td/span[contains(text(), 'Success') or contains(text(), 'Warning')]").text
         print(getnoteText)
 
+        # getnoteText = driver.find_element(By.XPATH, "//*[@class='view-more-component is-open has-view-more ']//table//tbody//td/span[contains(text(), 'Warning')]").text
+        # print(getnoteText)
 
-        if getnoteText == "Success" or getnoteTextColor == "Warning":
+
+        if getnoteText == "Success" or getnoteText == "Warning":
 
             # Scroll down to the bottom page of the main window page
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
             # This click on the Add button
-            driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div[1]/button[3]/span[1]").click()
+            #driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div[1]/button[3]/span[1]").click()
+
+            driver.find_element(By.XPATH, "//div[@class='tkt-convo-buttons-container']/button[3]/span[1]").click()
 
             # This is for the writing on the txt field
-            driver.find_element(By.XPATH,
-                                "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[3]/div[1]/div/div/div[3]/div/p").send_keys("The backup job was successful ")
+            #driver.find_element(By.XPATH,
+                               # "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[3]/div[1]/div/div/div[3]/div/p").send_keys("The backup job was successful ")
+
+            driver.find_element(By.XPATH, "//div[@class='fr-element fr-view fr-element-scroll-visible']/p").send_keys("The Backup Job was Successful")
 
             time.sleep(5)
 
             # This click the update button
-            driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[5]/div/div[2]/div/div/button").click()
+            # driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[5]/div/div[2]/div/div/button").click()
+
+            driver.find_element(By.XPATH, "//div[@class='btn-group send-and-set']/button").click()
 
             time.sleep(5)
 
             #This is for clicking the drop down button for the Status
-            driver.find_element(By.XPATH,
-                                "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click()
+            #driver.find_element(By.XPATH,
+                               # "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click()
+
+            ##driver.find_element(By.XPATH, "/html/body/div[1]/div[9]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click()
+
+
+            driver.find_element(By.XPATH, "//div[@class='ember-power-select-trigger ember-basic-dropdown-trigger ember-basic-dropdown-trigger--in-place ember-view']//span[3]").click()
 
             # This is for selecting the close button
             driver.find_element(By.XPATH,
@@ -130,13 +148,18 @@ for count in ticRegex:
 
             time.sleep(3)
 
-            scrollAgent = driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]")
+            #scrollAgent = driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]")
+
+            scrollAgent = driver.find_element(By.XPATH, "//div[@class='ember-power-select-trigger ember-basic-dropdown-trigger ember-basic-dropdown-trigger--in-place ember-view']//span[3]")
+
             driver.execute_script("arguments[0].scrollIntoView(true);", scrollAgent);
 
             time.sleep(3)
 
             # This is for selecting the Agent
-            driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]").click()
+            driver.find_element(By.XPATH, "/html/body/div[1]/div[9]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]").click()
+
+            ##driver.find_element(By.XPATH, "//div[@class='ember-power-select-trigger ember-basic-dropdown-trigger ember-basic-dropdown-trigger--in-place ember-view']/div[8]/div/div[1]/span[3]").click()
 
             #This is for selecting the Agent name/user
             driver.find_element(By.XPATH, "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[4]").click()
@@ -145,7 +168,7 @@ for count in ticRegex:
 
             # This is for the Category selection
             driver.find_element(By.XPATH,
-                                "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[10]/div/div[1]/span[1]").click()
+                                "/html/body/div[1]/div[9]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[10]/div/div[1]/span[1]").click()
 
             driver.find_element(By.XPATH,
                                 "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[8]").click()
@@ -154,7 +177,7 @@ for count in ticRegex:
 
             # selecting the sub-category
             driver.find_element(By.XPATH,
-                                "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[11]/div[1]/div/div[1]/span[1]").click()
+                                "/html/body/div[1]/div[9]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[11]/div[1]/div/div[1]/span[1]").click()
 
             driver.find_element(By.XPATH,
                                 "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[11]").click()
@@ -170,6 +193,6 @@ for count in ticRegex:
         else:
             print("Backup status is Error")
 
-    except:
+    except SyntaxError:
         print("Error found in the code")
 
