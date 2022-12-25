@@ -117,11 +117,6 @@ for count in ticRegex:
             time.sleep(5)
 
             #This is for clicking the drop down button for the Status
-            #driver.find_element(By.XPATH,
-                               # "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click()
-
-            ##driver.find_element(By.XPATH, "/html/body/div[1]/div[9]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div/div[1]/span[1]").click()
-
 
             driver.find_element(By.XPATH, "//div[@class='ember-power-select-trigger ember-basic-dropdown-trigger ember-basic-dropdown-trigger--in-place ember-view']//span[3]").click()
 
@@ -130,8 +125,6 @@ for count in ticRegex:
                                 "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[6]").click()
 
             time.sleep(3)
-
-            #scrollAgent = driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]")
 
             scrollAgent = driver.find_element(By.XPATH, "//div[@class='ember-power-select-trigger ember-basic-dropdown-trigger ember-basic-dropdown-trigger--in-place ember-view']//span[3]")
 
@@ -167,7 +160,6 @@ for count in ticRegex:
 
             # The update button
             driver.find_element(By.ID, "form-submit").click()
-            #driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/div/div/button").click()
 
             time.sleep(5)
 
