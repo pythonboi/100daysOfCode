@@ -1,90 +1,76 @@
+# Import the turtle, Screen and time module
+import time
 from turtle import Turtle
-
 from turtle import Screen
 
+# Instantiate the Screen class to the sc object type
 sc = Screen()
-
+# Instantiate the Turtle class to the tt object type
 tt = Turtle()
 
+# Increase the size of the drawing turtle pen
 tt.pensize(2)
+# Hide the turtle shape during drawing
 tt.hideturtle()
-
-tt.speed(10)
-
-lines = [-100, 15, 100, 30]
-
-line = 360
-
+# Increase the speed of the turtle during drawing, the fastest speed is by 10
+tt.speed(5)
+# place the pen up to avoid and line drawing during the position of the turtle
 tt.penup()
+# pause the turtle before drawing
+time.sleep(3)
 
 
-# Draw Square
+# Create a function to Draw a Square
 
 def penDown():
     tt.pendown()
-    # tt.forward(100)
-    tt.forward(450)
+    tt.forward(700)
     tt.right(90)
     tt.forward(200)
     tt.right(90)
-    tt.forward(450)
+    tt.forward(700)
     tt.right(90)
     tt.forward(200)
     tt.right(90)
-    # tt.right(line / 4)
-    # tt.forward(70)
 
 
-print(tt.pos())
-print(tt.xcor())
-print(tt.ycor())
-
+# Draw the red side of the flag
 tt.color("red")
-
-tt.goto(-200, 250)
 
 
 def red():
+    tt.goto(-350, 250)
     penDown()
 
 
+# The beginning of filling the side of the drawing with the color
 tt.begin_fill()
+# call the red function to execute the code in the body of the red function
 red()
-print(tt.position())
-print(round(tt.xcor(), 5))
-print(round(tt.ycor()))
-
+# The end to stop the color painting on the drawing
 tt.end_fill()
 
-print("Printing the headings")
-print(tt.heading())
-
-print("Drawing Yellow now")
 tt.color("yellow")
 
-tt.penup()
 
-tt.goto(-200, 50)
-
-
+# Draw the yellow side of the flag
 def yellow():
+    tt.penup()
+    tt.goto(-350, 50)
     penDown()
 
 
 tt.begin_fill()
 yellow()
 tt.end_fill()
-print(tt.ycor())
 
+# Draw the green side of the flag
 tt.color("green")
-
-print("getting the heading of Green")
-print(tt.heading())
 
 
 def green():
     tt.penup()
-    tt.goto(-200, -150)
+    tt.goto(-350, -150)
     penDown()
     tt.penup()
 
@@ -92,85 +78,21 @@ def green():
 tt.begin_fill()
 green()
 tt.end_fill()
-print(tt.position())
 
-tt.goto(-80, -25)
-
+# Center and draw the star on the flag
 tt.color("black")
-tt.begin_fill()
 
 
 def star():
-    tt.penup()
+    tt.goto(-100, -25)
     for drawStar in range(5):
         tt.pendown()
         tt.forward(210)
         tt.right(144)
 
 
+tt.begin_fill()
 star()
 tt.end_fill()
 
-# def moveForward():
-#     tt.penup()
-#     tt.goto(-100, 80)
-#     tt.pendown()
-#     tt.forward(300)
-#     tt.right(90)
-#     tt.forward(200)
-#     tt.right(90)
-#     tt.forward(300)
-#     tt.right(90)
-#     tt.forward(200)
-#
-#
-# moveForward()
-#
-# tt.color("#ff0000")
-# tt.begin_fill()
-#
-#
-# def drawMiddle():
-#     tt.penup()
-#     tt.goto(-100, 15)
-#     tt.right(90)
-#     tt.pendown()
-#     tt.forward(300)
-#
-#
-# drawMiddle()
-# tt.end_fill()
-#
-# tt.color("#ffff00")
-#
-#
-# def drawMiddlen():
-#     tt.penup()
-#     tt.goto(-100, -55)
-#     # tt.right(90)
-#     tt.pendown()
-#     tt.forward(300)
-#
-#
-# tt.begin_fill()
-# drawMiddlen()
-# tt.end_fill()
-#
-# tt.penup()
-# tt.goto(20, -10)
-#
-# tt.color("black")
-# tt.begin_fill()
-#
-#
-# def star():
-#     for drawStar in range(5):
-#         tt.pendown()
-#         tt.forward(75)
-#         tt.right(144)
-#
-#
-# star()
-# tt.end_fill()
-#
 sc.exitonclick()
