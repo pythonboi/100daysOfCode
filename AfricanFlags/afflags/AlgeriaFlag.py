@@ -39,14 +39,25 @@ tl.begin_fill()
 dkgreen()
 tl.end_fill()
 
-tl.color("#ff0000")
+tl.color("red")
 
 
 def crescent():
     tl.penup()
     tl.goto(90, -35)
     tl.pendown()
-    tl.circle(90)
+    tl.begin_fill()
+    for i in range(1, 1 + 1, 1):
+
+        tl.circle(90 * i)
+
+        tl.end_fill()
+
+        for m in range(1, 1 + 1, 1):
+            tl.color("white")
+            # tl.begin_fill()
+            tl.circle(70 * i)
+            # tl.end_fill()
 
 
 crescent()
