@@ -90,7 +90,7 @@ for count in ticRegex:
     try:
 
         getnoteText = driver.find_element(By.XPATH,
-                                          "//*[@class='view-more-component is-open has-view-more ']//table//tbody//td/span[contains(text(), 'Success') or contains(text(), 'Warning')]").text
+                                          "//*[@class='view-more-component is-open has-view-more ']//table//tbody//td/span[contains(text(), 'Success') or contains(text(), 'Warning') or contains(text(), 'Error')]").text
         print(getnoteText)
 
         if getnoteText == "Success" or getnoteText == "Warning":
@@ -163,9 +163,17 @@ for count in ticRegex:
 
             time.sleep(5)
 
+        ##elif
+
         else:
             print("Backup status is Error")
 
     except SyntaxError:
         print("Error found in the code")
 
+
+if sys.argv == 0:
+    print("Code was successful")
+
+    driver.quit()
+    driver.close()
