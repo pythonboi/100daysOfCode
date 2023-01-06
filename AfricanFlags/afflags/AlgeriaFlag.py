@@ -31,7 +31,7 @@ def square():
 
 
 # tl.color("green")
-tl.color("#008040")
+tl.color("#006633")
 
 
 def dkgreen():
@@ -43,16 +43,14 @@ tl.begin_fill()
 dkgreen()
 tl.end_fill()
 
-print(tl.position())
-print("This is after printing the green square ")
-
 # Creating the white square
 tl.penup()
 tl.goto(0, 150)
 
 
 def whiteSquare():
-    tl.color("white")
+    # tl.color("white")
+    tl.color("#FFFFFF")
 
     square()
 
@@ -61,7 +59,8 @@ tl.begin_fill()
 whiteSquare()
 tl.end_fill()
 
-tl.color("red")
+# tl.color("red")
+tl.color("#D21034")
 
 
 def crescent():
@@ -78,9 +77,10 @@ def crescent():
 
         # This is the inner circle
         for m in range(1, 1 + 1, 1):
-            tl.color("white")
+            # tl.color("white")
+            tl.color("#FFFFFF")
             tl.begin_fill()
-            # tl.circle(77 * i)
+
             tl.circle(80 * m)
             tl.end_fill()
 
@@ -88,11 +88,12 @@ def crescent():
 
             tl.penup()
             print(tl.position())
-            # tl.goto(0, -110)
+
             tl.goto(-0, -115)
             tl.left(90)
             # tl.color("green")
-            tl.color("#008040")
+            # tl.color("#008040")
+            tl.color("#006633")
             tl.begin_fill()
 
             # Creating the half circle
@@ -109,10 +110,10 @@ def crescent():
 
 crescent()
 
-print(tl.position())
 
 tl.goto(47.5, -0)
-tl.color("red")
+# tl.color("red")
+tl.color("#D21034")
 
 
 def star():
@@ -133,12 +134,11 @@ tl.end_fill()
 
 tl.penup()
 
-print(tl.pos())
 
-# tl.goto(75, -14)
 tl.goto(80, -20)
 
-tl.color("white")
+# tl.color("white")
+tl.color("#FFFFFF")
 
 tl.begin_fill()
 tl.circle(100)
