@@ -11,8 +11,8 @@ tt.hideturtle()
 
 
 def square():
-    tt.pendown()
 
+    tt.pendown()
     tt.right(180)
     tt.forward(500)
     tt.left(90)
