@@ -8,7 +8,6 @@ sc.bgcolor("black")
 
 tt.penup()
 tt.hideturtle()
-tt.speed(10)
 
 
 def square():
@@ -21,8 +20,6 @@ def square():
     tt.left(90)
     tt.forward(500)
     tt.left(90)
-    # print(tt.xcor(), tt.ycor())
-    print(tt.pos())
     tt.forward(250)
 
 
@@ -33,7 +30,6 @@ def green():
     tt.penup()
     tt.color("green")
     tt.goto(-400, 250)
-    # tt.pendown()
     square()
 
 
