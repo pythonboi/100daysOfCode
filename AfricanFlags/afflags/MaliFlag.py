@@ -28,7 +28,7 @@ square()
 
 def green():
     tt.penup()
-    tt.color("green")
+    tt.color("#14B53A")
     tt.goto(-400, 250)
     square()
 
@@ -39,7 +39,7 @@ tt.end_fill()
 
 
 def yellow():
-    tt.color("yellow")
+    tt.color("#FCD116")
     tt.penup()
     tt.right(90)
     tt.goto(-150, 250)
@@ -52,7 +52,7 @@ tt.end_fill()
 
 
 def red():
-    tt.color("red")
+    tt.color("#CE1126")
     tt.penup()
     tt.right(90)
     tt.goto(100, 250)
@@ -62,21 +62,5 @@ def red():
 tt.begin_fill()
 red()
 tt.end_fill()
-
-
-def star():
-    tt.color("green")
-    tt.penup()
-    tt.goto(15, -50)
-    tt.right(35)
-    for n in range(5):
-        tt.forward(135)
-        tt.right(144)
-
-
-tt.begin_fill()
-star()
-tt.end_fill()
-
 
 sc.exitonclick()
