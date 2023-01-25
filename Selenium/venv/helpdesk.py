@@ -38,9 +38,6 @@ with open(myPass, 'r') as file:
     passGet = file.read()
 
     driver.find_element(By.ID, "i0118").send_keys(passGet)
-    print("I sent the password")
-#driver.find_element(By.XPATH, "/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div/div[3]/div/div[2]/div/div[4]/div[2]/div/div/div/div/input").click()
-print("I got this far")
 
 driver.implicitly_wait(10)
 
@@ -48,8 +45,7 @@ getTitle = driver.title
 myTitle = "Sign in to your account"
 
 if getTitle == myTitle:
-    # driver.find_element(By.XPATH, "/html/body/div/form/div/div/div[2]/div[1]/div/div/div/div/div/div[3]/div/div[2]/div/div[3]/div[2]/div/div/div[2]/input").click()
-    # driver.find_element(By.XPATH, )
+
     driver.find_element(By.ID, "idSIButton9").click()
 
 driver.implicitly_wait(15)
@@ -86,8 +82,7 @@ for count in ticRegex:
 
     time.sleep(3)
     # This is click to view more of the ticket description
-    #driver.find_element(By.XPATH, "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/button").click()
-    #driver.find_element(By.XPATH, "/html/body/div[1]/div[9]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/div[1]/div/div/span/div/button").click()
+
     driver.find_element(By.XPATH, "//div[@class='view-more-component is-closed has-view-more ']/button").click()
     time.sleep(2)
 
