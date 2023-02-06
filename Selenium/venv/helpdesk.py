@@ -9,6 +9,7 @@ from time import sleep
 
 failedTicket = []
 ticRegex = []
+newNumber = []
 
 chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
@@ -76,15 +77,26 @@ driver.implicitly_wait(10)
 
 for count in ticRegex:
 
-    driver.find_element(By.ID, "header_search").send_keys(count)
+    numbers = []
 
-    driver.find_element(By.XPATH, "//li[@class='spotlight_result']/a").click()
+    try:
 
-    time.sleep(3)
-    # This is click to view more of the ticket description
+        driver.find_element(By.ID, "header_search").send_keys(count)
 
-    driver.find_element(By.XPATH, "//div[@class='view-more-component is-closed has-view-more ']/button").click()
-    time.sleep(2)
+        gethyperlink = driver.find_element(By.XPATH, "//li[@class='spotlight_result']/a")#.click()
+        #print(gethyperlink.text)
+
+        gethyperlink.click()
+
+
+        time.sleep(3)
+            # This is click to view more of the ticket description
+
+        driver.find_element(By.XPATH, "//div[@class='view-more-component is-closed has-view-more ']/button").click()
+        time.sleep(2)
+
+    except SyntaxError:
+        print("Ticket number not matching with the ticket title")
 
     try:
 
@@ -132,7 +144,9 @@ for count in ticRegex:
             time.sleep(3)
 
             # This is for selecting the Agent
-            driver.find_element(By.XPATH, "/html/body/div[1]/div[9]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]").click()
+            driver.find_element(By.XPATH, "/html/body/div[1]/div[10]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[8]/div/div[1]/span[1]").click()
+
+            #driver.find_element(By.)
 
             #This is for selecting the Agent name/user
             driver.find_element(By.XPATH, "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[4]").click()
@@ -141,7 +155,7 @@ for count in ticRegex:
 
             # This is for the Category selection
             driver.find_element(By.XPATH,
-                                "/html/body/div[1]/div[9]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[10]/div/div[1]/span[1]").click()
+                                "/html/body/div[1]/div[10]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[10]/div/div[1]/span[1]").click()
 
             driver.find_element(By.XPATH,
                                 "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[8]").click()
@@ -150,7 +164,7 @@ for count in ticRegex:
 
             # selecting the sub-category
             driver.find_element(By.XPATH,
-                                "/html/body/div[1]/div[9]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[11]/div[1]/div/div[1]/span[1]").click()
+                                "/html/body/div[1]/div[10]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[11]/div[1]/div/div[1]/span[1]").click()
 
             driver.find_element(By.XPATH,
                                 "//ul[@class='ember-power-select-options ember-power-select-single-list ember-view']/li[11]").click()
@@ -171,7 +185,8 @@ for count in ticRegex:
         print("Error found in the code")
 
 
-if sys.exit() == 0:
+if sys.argv[0] == 0:
+# if sys.exit() == 0:
     print("Code was successful")
 
     driver.quit()
