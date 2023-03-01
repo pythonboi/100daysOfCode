@@ -129,7 +129,10 @@ for count in ticRegex:
 
             #This is for clicking the drop down button for the Status
 
-            driver.find_element(By.XPATH, "//div[@class='ember-power-select-trigger ember-basic-dropdown-trigger ember-basic-dropdown-trigger--in-place ember-view']//span[3]").click()
+            # driver.find_element(By.XPATH, "//div[@class='ember-power-select-trigger ember-basic-dropdown-trigger ember-basic-dropdown-trigger--in-place ember-view']//span[6]").click()
+            driver.find_element(By.XPATH, "/html/body/div[1]/div[10]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div[1]/div[1]/span[1]").click()
+
+            #driver.find_element(By.XPATH, "//div[@class='ember-power-select-trigger ember-basic-dropdown-trigger ember-basic-dropdown-trigger--in-place ember-basic-dropdown-trigger--left ember-basic-dropdown-trigger--above ember-view']//span[3]").click()
 
             # This is for selecting the close button
             driver.find_element(By.XPATH,
@@ -137,7 +140,8 @@ for count in ticRegex:
 
             time.sleep(3)
 
-            scrollAgent = driver.find_element(By.XPATH, "//div[@class='ember-power-select-trigger ember-basic-dropdown-trigger ember-basic-dropdown-trigger--in-place ember-view']//span[3]")
+            # scrollAgent = driver.find_element(By.XPATH, "//div[@class='ember-power-select-trigger ember-basic-dropdown-trigger ember-basic-dropdown-trigger--in-place ember-view']//span[5]")
+            scrollAgent = driver.find_element(By.XPATH, "/html/body/div[1]/div[10]/div[2]/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/section[3]/div/div/section/section/div/div/div/form/div[1]/div/div[2]/div[1]/div[1]/span[1]")
 
             driver.execute_script("arguments[0].scrollIntoView(true);", scrollAgent);
 
