@@ -100,8 +100,16 @@ for count in ticRegex:
 
     try:
 
+        # getnoteText = driver.find_element(By.XPATH,
+                                         # "//*[@class='view-more-component is-open has-view-more ']//table//tbody//td/span[contains(text(), 'Success') or contains(text(), 'Warning') or contains(text(), 'Error')]").text
+
+        # getnoteText = driver.find_element(By.XPATH,
+                                        #  "//*[@class='view-more-component is-open has-view-more ']//table//tbody//tr//td/span[contains(text(), 'Success') or contains(text(), 'Warning') or contains(text(), 'Error')]").text
+
         getnoteText = driver.find_element(By.XPATH,
-                                          "//*[@class='view-more-component is-open has-view-more ']//table//tbody//td/span[contains(text(), 'Success') or contains(text(), 'Warning') or contains(text(), 'Error')]").text
+                                          "//*[@class='view-more-component is-open has-view-more ']//table//tbody/tr[7]/td[2]/span[contains(text(), 'Success') or contains(text(), 'Warning') or contains(text(), 'Error')]").text
+
+
         print(getnoteText)
 
         if getnoteText == "Success" or getnoteText == "Warning":
@@ -117,7 +125,10 @@ for count in ticRegex:
             #driver.find_element(By.XPATH,
                                # "/html/body/div[1]/div[8]/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[1]/section/div/div/div/div[3]/div[1]/div/div/div[3]/div/p").send_keys("The backup job was successful ")
 
-            driver.find_element(By.XPATH, "//div[@class='fr-element fr-view fr-element-scroll-visible']/p").send_keys("The Backup Job was Successful")
+            # driver.find_element(By.XPATH, "//div[@class='fr-element fr-view fr-element-scroll-visible']/p").send_keys("The Backup Job was Successful")
+
+            driver.find_element(By.XPATH, "//div[@class='fr-element fr-view fr-element-scroll-visible']/div[1]").send_keys(
+                "The Backup Job was Successful.")
 
             time.sleep(5)
 
